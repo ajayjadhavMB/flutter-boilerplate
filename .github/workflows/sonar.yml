@@ -37,13 +37,13 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           sonar-scanner \
-            -Dsonar.projectKey=flutter_app \
+            -Dsonar.projectKey=flutter-boilerplate \
             -Dsonar.sources=lib \
             -Dsonar.tests=test \
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
+            -Dsonar.dart.analysis.reportPath=analysis.txt \
+            -Dsonar.coverageReportPaths=coverage/lcov.info \
             -Dsonar.dart.analysis.useDartAnalyzer=true \
             -Dsonar.flutter.analyze=true \
-            -Dsonar.coverage.exclusions=**/* \
             -Dsonar.exclusions=**/*.g.dart,**/*.freezed.dart,**/*.pb.dart
-
