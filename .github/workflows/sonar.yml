@@ -45,5 +45,5 @@ jobs:
             -Dsonar.dart.analysis.useDartAnalyzer=true \
             -Dsonar.flutter.analyze=true \
             -Dsonar.coverage.exclusions=**/* \
-            -Dsonar.exclusions=build/**, ios/**, android/**
+            -Dsonar.exclusions=**/*.g.dart,**/*.freezed.dart,**/*.pb.dart
 
