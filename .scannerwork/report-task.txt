@@ -1,6 +1,6 @@
 projectKey=flutter-boilerplate
-serverUrl=https://sonar.mindbowser.com
-serverVersion=25.4.0.105899
-dashboardUrl=https://sonar.mindbowser.com/dashboard?id=flutter-boilerplate
-ceTaskId=1e42935f-33e8-41b5-a5b6-d710d09d63ce
-ceTaskUrl=https://sonar.mindbowser.com/api/ce/task?id=1e42935f-33e8-41b5-a5b6-d710d09d63ce
+serverUrl=https://unredeemable-conjunctly-sunni.ngrok-free.dev
+serverVersion=25.9.0.112764
+dashboardUrl=https://unredeemable-conjunctly-sunni.ngrok-free.dev/dashboard?id=flutter-boilerplate
+ceTaskId=9af059b4-6908-434d-8378-5ac524a3a89b
+ceTaskUrl=https://unredeemable-conjunctly-sunni.ngrok-free.dev/api/ce/task?id=9af059b4-6908-434d-8378-5ac524a3a89b

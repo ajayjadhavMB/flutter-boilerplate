@@ -1,0 +1,49 @@
+name: Flutter SonarQube Analysis
+
+on:
+  pull_request:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Generate analysis + test coverage
+        run: |
+          flutter analyze > analysis.txt || true
+          flutter test --coverage
+
+      - name: Download sonar-scanner
+        uses: warchant/setup-sonar-scanner@v7
+        with:
+          version: 5.0.1.3006
+
+      - name: Run SonarQube Scan
+        env:
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          sonar-scanner \
+            -Dsonar.projectKey=flutter_app \
+            -Dsonar.sources=lib \
+            -Dsonar.tests=test \
+            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
+            -Dsonar.dart.analysis.useDartAnalyzer=true \
+            -Dsonar.flutter.analyze=true \
+            -Dsonar.coverage.exclusions=**/* \
+            -Dsonar.exclusions=build/**, ios/**, android/**
+
